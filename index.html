@@ -1,0 +1,110 @@
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Mail, Github, Linkedin } from "lucide-react";
+
+export default function Portfolio() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-200 text-slate-800">
+      {/* Hero */}
+      <section className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+            Hi, I'm <span className="text-indigo-600">Manoranjan Kumar</span>
+          </h1>
+          <p className="mt-6 text-lg text-slate-600">
+            I build modern web applications, automation tools, and AI-powered solutions that simplify real-world problems and improve efficiency.
+          </p>
+          <div className="mt-8 flex gap-4">
+            <Button className="rounded-2xl">View Projects</Button>
+            <Button variant="outline" className="rounded-2xl">Contact Me</Button>
+          </div>
+        </motion.div>
+
+        <motion.img
+          src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe"
+          alt="profile"
+          className="rounded-3xl shadow-xl"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+        />
+      </section>
+
+      {/* About */}
+      <section className="bg-white py-20">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-semibold">About Me</h2>
+          <p className="mt-6 text-slate-600 text-lg">
+            I am a developer passionate about automation, AI, and full-stack development. I enjoy building efficient digital solutions that solve real problems, from form automation to healthcare data systems and e-commerce platforms.
+          </p>
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section className="py-20 max-w-6xl mx-auto px-6">
+        <h2 className="text-3xl font-semibold text-center mb-12">Projects</h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+              {title:"Govt Exam Auto Fill Form Automation",desc:"Automation tool that fills government exam forms quickly and accurately."},
+              {title:"eBook Selling Ecommerce Website",desc:"Full-stack ecommerce platform for selling digital books online."},
+              {title:"Patient Medical History Portfolio",desc:"System to manage and track patient medical records securely."},
+              {title:"Student Digital Score Card",desc:"Web app to monitor and analyze student performance digitally."}
+            ].map((item, index) => (
+            <motion.div key={item} whileHover={{ y: -6 }}>
+              <Card className="rounded-2xl shadow-md">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-lg">{item.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600">
+                    {item.desc}
+                  </p>
+                  <Button variant="outline" className="mt-4 w-full rounded-xl">
+                    View Details
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Skills */}
+      <section className="bg-white py-20">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold text-center mb-10">Skills</h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {["Python","Java","JavaScript","React","Django","PostgreSQL","HTML","CSS","Git","Android Development","Pandas","NumPy","Generative AI","Prompt Engineering"].map(skill => (
+              <div className="bg-slate-100 rounded-xl p-4 text-center shadow-sm">
+                {skill}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="py-20 text-center max-w-xl mx-auto px-6">
+        <h2 className="text-3xl font-semibold">Get In Touch</h2>
+        <p className="mt-4 text-slate-600">
+          Feel free to contact me for collaborations or just a friendly hello 👋
+        </p>
+
+        <div className="flex justify-center gap-6 mt-8">
+          <Mail />
+          <Github />
+          <Linkedin />
+        </div>
+      </section>
+
+      <footer className="text-center py-10 text-sm text-slate-500">
+        © {new Date().getFullYear()} Manoranjan Kumar. All rights reserved.
+      </footer>
+    </div>
+  );
+}
